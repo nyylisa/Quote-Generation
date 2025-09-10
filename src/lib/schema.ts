@@ -6,10 +6,10 @@ export const quotes = pgTable("quotes", {
   name: text("name").notNull(),
   
 })
-
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),    // auto-incrementing ID
-  name: text("name").notNull(),     // user name
-  age: integer("age"),              // optional age
-});
+//test drizzle
+// export const users = pgTable("users", {
+//   id: serial("id").primaryKey(),    // auto-incrementing ID
+//   name: text("name").notNull(),     // user name
+//   age: integer("age"),              // optional age
+// });
 
