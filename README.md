@@ -48,3 +48,5 @@ How it Works
 - Backend: When the user submits the form, the frontend makes a POST request to a different API route (e.g., /api/quotes/add). This route uses Drizzle ORM to insert the new quote into the quotes table in the PostgreSQL database.
 
 - Backend: The API responds with a success message, and the frontend closes the modal.
+
+Web Deployment link: https://quote-generation-mocha.vercel.app/
