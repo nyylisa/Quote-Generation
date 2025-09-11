@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Voilà
+Ny Lisa
 
-## Getting Started
+Brief Description
+This is a web application that fetches a new inspirational quote with a button click and allows users to contribute their own quotes via a simple form. The project is built using Next.js for both the frontend and backend, with Drizzle ORM for database interactions and PostgreSQL as the database.
+Setup Instructions
+To get this project up and running on your local machine, follow these steps:
 
-First, run the development server:
+Clone the repository:
 
-```bash
+git clone <your-repo-url>
+cd <your-repo-name>
+
+Install dependencies:
+
+npm install
+
+Set up your database:
+
+Create a PostgreSQL database.
+
+Create a .env file in the root directory.
+
+Add your database connection string to the .env file:
+
+DATABASE_URL="postgresql://user:password@host:port/database_name"
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be accessible at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Architecture Explanation
+How it Works
+The application uses a client-server architecture with two main data flows:
 
-This project uses the [`geist`](https://www.npmjs.com/package/geist) package to automatically optimize and load [Geist](https://vercel.com/font), a font family from Vercel.
+Fetching a Quote:
 
-## Learn More
+Frontend: The user clicks the "Get Another Quote" button on the page.tsx. This triggers a fetch request to the backend API route.
 
-To learn more about Next.js, take a look at the following resources:
+Backend: The request is handled by a Next.js API route (e.g., /api/quotes). This route uses Drizzle ORM to query the PostgreSQL database. It retrieves a random quote and sends it back as a JSON response.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Frontend: The frontend receives the JSON response, updates its state, and displays the new quote and author on the page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Adding a Quote:
 
-## Deploy on Vercel
+Frontend: The user clicks the "Add Your Quote" button, which opens a modal. They fill out a form with a quote and their name.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Backend: When the user submits the form, the frontend makes a POST request to a different API route (e.g., /api/quotes/add). This route uses Drizzle ORM to insert the new quote into the quotes table in the PostgreSQL database.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Backend: The API responds with a success message, and the frontend closes the modal.
